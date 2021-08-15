@@ -1,0 +1,74 @@
+.searchInputs {
+  margin-top: 20px;
+  display: flex;
+}
+
+.searchBar {
+  height: 50px;
+  width: 600px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px, 5px, 15px;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  border-radius: 10px;
+}
+.search input {
+  background-color: #fff;
+  border: 0;
+  border-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  height: 50px;
+  width: 500px;
+}
+.searchIcon {
+  height: 40px;
+  width: 50px;
+  background-color: #fff;
+  display: grid;
+  place-items: center;
+  margin: 10px;
+}
+input:focus {
+  outline: none !important;
+}
+.dataResult {
+  margin-top: 1px;
+  margin-left: 20px;
+  width: 465px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px, 5px, 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem p {
+  margin-left: 10px;
+}
+.list {
+  text-decoration: none;
+  padding-left: 15px;
+  font-size: 14px;
+}
+.list:hover {
+  background-color: lightgray;
+}
+
+#clearButton {
+  cursor: pointer;
+}
