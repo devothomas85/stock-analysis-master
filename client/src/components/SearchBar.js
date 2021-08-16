@@ -8,10 +8,9 @@ export default class SearchBar extends React.Component {
     super();
     this.state = {
       data: [],
-      filterData: "",
-      filteredData: [],
       search: "",
       valueEnter: "",
+      searchValue: "",
     };
   }
   componentDidMount() {
@@ -19,9 +18,11 @@ export default class SearchBar extends React.Component {
   }
 
   fetchData = () => {
-    return axios
-      .get("http://localhost:8080/api/stocks")
-      .then((response) => this.setState({ data: response.data }));
+    try {
+      return axios
+        .get("http://localhost:8080/api/stocks")
+        .then((response) => this.setState({ data: response.data }));
+    } catch (err) {}
   };
 
   handleFilter = (event) => {
@@ -29,8 +30,9 @@ export default class SearchBar extends React.Component {
   };
 
   searchEnter = (val) => {
-    console.log(val);
-    // this.setState({ valueEnter: e.value.name });
+    this.setState({ searchValue: val.name });
+    this.props.getDetails(val.id);
+    this.setState({ search: "" });
   };
 
   render() {
@@ -64,7 +66,8 @@ export default class SearchBar extends React.Component {
                   className="list dataItem"
                   id="{
                     {value.id}}"
-                  onClick={this.searchEnter}
+                  value={this.state.searchValue}
+                  onClick={this.searchEnter.bind(null, value)}
                 >
                   {value.name}
                 </div>

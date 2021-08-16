@@ -6,21 +6,27 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
 import StockDetails from "./components/StockDetails";
 import axios from "axios";
+import Loading from "./components/Loading";
 
 export default class App extends React.Component {
   constructor(props) {
     super();
     this.state = {
       data: "",
+      showHide: false,
+      loading: false,
     };
   }
-  componentDidMount() {
-    this.getDetails();
-  }
-  getDetails = () => {
-    return axios
-      .get("http://localhost:8080/api/stocks/2")
-      .then((response) => this.setState({ data: response.data }));
+
+  getDetails = (id) => {
+    try {
+      return axios
+        .get("http://localhost:8080/api/stocks/" + id)
+        .then((response) =>
+          this.setState({ data: response.data, showHide: true, loading: true })
+        )
+        .catch((error) => this.setState({ showHide: false }));
+    } catch (err) {}
   };
 
   render() {
@@ -40,9 +46,13 @@ export default class App extends React.Component {
                 stock analysis and screening tool for
               </span>
               <span className="p-size">investors in india.</span>
-              <SearchBar />
+              <SearchBar getDetails={this.getDetails} />
             </div>
-            <StockDetails data={this.state.data} />
+            {this.state.showHide ? (
+              <StockDetails data={this.state.data} />
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
       </Router>

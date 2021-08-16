@@ -8,13 +8,11 @@ export default class StockDetails extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
-
   render() {
     return (
       <div className="card">
         <div className="outercard">
-          <h4>name</h4>
+          <h4>{this.props.data.name}</h4>
           <div className="innercard">
             <Container>
               <Row>
@@ -22,7 +20,7 @@ export default class StockDetails extends React.Component {
                   <div className="capsule1">
                     <span className="col">Market Cap</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      ₹ 12.00
+                      ₹ {this.props.data.market_cap}
                     </span>
                   </div>
                 </Col>
@@ -30,16 +28,16 @@ export default class StockDetails extends React.Component {
                   <div className="capsule1">
                     <span className="col">Divident Yield{"   "}</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      12.00%
+                      {this.props.data.divident_yield}%
                     </span>
                   </div>
                 </Col>
                 <br />
                 <Col sm>
                   <div className="capsule1">
-                    <span className="col">Debt</span>
+                    <span className="col">Debt Equality</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      12.00%
+                      {this.props.data.debt_to_equity}%
                     </span>
                   </div>
                 </Col>
@@ -49,7 +47,7 @@ export default class StockDetails extends React.Component {
                   <div className="capsule">
                     <span className="col">Current Price</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      ₹ 12.00
+                      ₹ {this.props.data.curr_market_price}
                     </span>
                   </div>
                 </Col>
@@ -57,15 +55,15 @@ export default class StockDetails extends React.Component {
                   <div className="capsule">
                     <span className="col">ROCE</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      12.00%
+                      {this.props.data.roce}%
                     </span>
                   </div>
                 </Col>
                 <Col sm>
                   <div className="capsule">
-                    <span className="col">ROE</span>
+                    <span className="col">Eps</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      ₹ 12.00
+                      ₹ {this.props.data.eps}
                     </span>
                   </div>
                 </Col>
@@ -75,15 +73,15 @@ export default class StockDetails extends React.Component {
                   <div className="capsule1">
                     <span className="col">Stock P/E</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      12.00%
+                      {this.props.data.stock_pe}%
                     </span>
                   </div>
                 </Col>
                 <Col sm>
                   <div className="capsule1">
-                    <span className="col">Debt Equality</span>
+                    <span className="col">ROE</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      12.00%
+                      {this.props.data.roe_pre_annum}%
                     </span>
                   </div>
                 </Col>
@@ -91,7 +89,7 @@ export default class StockDetails extends React.Component {
                   <div className="capsule1">
                     <span className="col">Reserves</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      ₹ 12.00
+                      ₹ {this.props.data.reserves}
                     </span>
                   </div>
                 </Col>
@@ -101,7 +99,7 @@ export default class StockDetails extends React.Component {
                   <div className="capsule">
                     <span className="col">Debt</span>
                     <span className="col-2" style={{ color: "red" }}>
-                      ₹ 12.00
+                      ₹ {this.props.data.debt}
                     </span>
                   </div>
                 </Col>
@@ -115,6 +113,7 @@ export default class StockDetails extends React.Component {
             </Container>
           </div>
         </div>
+        <div className="outercare-overlay"></div>
       </div>
     );
   }
